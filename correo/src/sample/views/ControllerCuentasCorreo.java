@@ -17,6 +17,7 @@ package sample.views;
         import sample.logica.Logica;
 
         import javax.mail.Folder;
+        import java.io.File;
         import java.net.URL;
         import java.util.ArrayList;
         import java.util.HashMap;
@@ -48,6 +49,7 @@ public class ControllerCuentasCorreo implements Initializable {
 
     @FXML
     public void imprimirCuenta(ActionEvent event){
+        File file=Logica.getInstance().getFile();
         Runnable runnable =
                 () -> {
                     try {
@@ -59,7 +61,7 @@ public class ControllerCuentasCorreo implements Initializable {
 
                         print = JasperFillManager.fillReport(getClass().getResourceAsStream("/sample/reportes/informeCuenta.jasper"), parametros, jr);
 
-                        JasperExportManager.exportReportToPdfFile(print, "informes\\informeCuenta.pdf");
+                        JasperExportManager.exportReportToPdfFile(print, file.getPath());
 
                     } catch (JRException e) {
                         e.printStackTrace();

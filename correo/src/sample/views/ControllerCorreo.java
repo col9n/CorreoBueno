@@ -27,6 +27,7 @@ import sample.clases.TreeItemPropio;
 import sample.logica.Logica;
 
 import javax.mail.Folder;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -334,6 +335,7 @@ public class ControllerCorreo implements Initializable {
 
     @FXML
     void imprimir(ActionEvent event) {
+        File file=Logica.getInstance().getFile();
         Runnable runnable =
                 () -> {
                     try {
@@ -350,7 +352,7 @@ public class ControllerCorreo implements Initializable {
 
                             print = JasperFillManager.fillReport(getClass().getResourceAsStream("/sample/reportes/informeMensaje.jasper"), parametros, jr);
 
-                            JasperExportManager.exportReportToPdfFile(print, "informes\\informeCorreo.pdf");
+                            JasperExportManager.exportReportToPdfFile(print, file.getPath());
                             lista.remove(email);
                         }
                     } catch (Exception e) {
@@ -362,6 +364,7 @@ public class ControllerCorreo implements Initializable {
 
     @FXML
     void imprimirCarpeta(ActionEvent event) {
+        File file=Logica.getInstance().getFile();
         Runnable runnable =
                 () -> {
                     try {
@@ -388,7 +391,7 @@ public class ControllerCorreo implements Initializable {
 
                             print = JasperFillManager.fillReport(getClass().getResourceAsStream("/sample/reportes/informeCarpeta.jasper"), parametros, jr);
 
-                            JasperExportManager.exportReportToPdfFile(print, "informes\\informeCarpeta.pdf");
+                            JasperExportManager.exportReportToPdfFile(print, file.getPath());
                             lista.remove(correo);
                         }
                     } catch (JRException e) {

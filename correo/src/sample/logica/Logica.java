@@ -6,6 +6,7 @@ import com.sun.mail.util.MailSSLSocketFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
+import javafx.stage.FileChooser;
 import modelos.Tarea;
 import sample.clases.Correo;
 import sample.clases.CuentaCorreo;
@@ -462,5 +463,11 @@ public class Logica {
 
     }
 
+    public File getFile() {
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
+        FileChooser fileChooser=new FileChooser();
+        fileChooser.getExtensionFilters().add(extFilter);
+        return fileChooser.showSaveDialog(null);
+    }
 
 }

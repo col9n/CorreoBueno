@@ -13,7 +13,7 @@ public class ControllerHelp {
 
     private void initializeHelp(Stage stage) {
         try {
-            File file = new File("C:\\Users\\DAM\\Desktop\\DocJGenerator\\src\\generator\\articles.zip");
+            File file = new File("C:\\Users\\col9n\\Desktop\\wiki\\generator\\articles.zip");
             URL url = file.toURI().toURL();
             JavaHelpFactory factory = new JavaHelpFactory(url);
             factory.create();
