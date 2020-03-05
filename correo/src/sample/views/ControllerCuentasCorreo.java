@@ -50,8 +50,7 @@ public class ControllerCuentasCorreo implements Initializable {
     @FXML
     public void imprimirCuenta(ActionEvent event){
         File file=Logica.getInstance().getFile();
-        Runnable runnable =
-                () -> {
+
                     try {
                         ArrayList<MensajeInforme> list = Logica.getInstance().imprimirCuenta(tableViewGestionCuentas.getSelectionModel().getSelectedItem().getStore(), tableViewGestionCuentas.getSelectionModel().getSelectedItem().getUser());
                         JRBeanCollectionDataSource jr = new JRBeanCollectionDataSource(list); //lista sería la colección a mostrar. Típicamente saldría de la lógica de nuestra aplicación
@@ -68,8 +67,7 @@ public class ControllerCuentasCorreo implements Initializable {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                };
-        new Thread(runnable).start();
+
     }
 
 

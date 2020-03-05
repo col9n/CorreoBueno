@@ -336,8 +336,6 @@ public class ControllerCorreo implements Initializable {
     @FXML
     void imprimir(ActionEvent event) {
         File file=Logica.getInstance().getFile();
-        Runnable runnable =
-                () -> {
                     try {
                         List<MensajeInforme> lista = new ArrayList<MensajeInforme>();
                         if (tableViewCorreo.getSelectionModel().getSelectedItem() instanceof Correo) {
@@ -350,23 +348,18 @@ public class ControllerCorreo implements Initializable {
                             JasperPrint print = null;
 
 
-                            print = JasperFillManager.fillReport(getClass().getResourceAsStream("/sample/reportes/informeMensaje.jasper"), parametros, jr);
+                            print = JasperFillManager.fillReport(getClass().getResourceAsStream("/sample/reportes/informeCorreo.jasper"), parametros, jr);
 
                             JasperExportManager.exportReportToPdfFile(print, file.getPath());
-                            lista.remove(email);
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                };
-        new Thread(runnable).start();
     }
 
     @FXML
     void imprimirCarpeta(ActionEvent event) {
         File file=Logica.getInstance().getFile();
-        Runnable runnable =
-                () -> {
                     try {
                         List<MensajeInforme> lista = new ArrayList<MensajeInforme>();
                         if (treeView.getSelectionModel().getSelectedItem() instanceof TreeItemPropio) {
@@ -377,6 +370,8 @@ public class ControllerCorreo implements Initializable {
                                     if (treeItem.getFolder().getType() == 3) {
                                         Logica.getInstance().cargarListaCorreos(treeItem.getCuenta().getStore(), treeItem.getFolder());
                                         for (Correo correo : Logica.getInstance().getListaCorreos()) {
+
+
                                             MensajeInforme email = new MensajeInforme(correo.getAsunto(), correo.getRemitente(), correo.getFecha(), correo.getTextoContenido(correo), treeItem.getFolder().getFullName());
                                             lista.add(email);
                                         }
@@ -392,15 +387,13 @@ public class ControllerCorreo implements Initializable {
                             print = JasperFillManager.fillReport(getClass().getResourceAsStream("/sample/reportes/informeCarpeta.jasper"), parametros, jr);
 
                             JasperExportManager.exportReportToPdfFile(print, file.getPath());
-                            lista.remove(correo);
                         }
                     } catch (JRException e) {
                         e.printStackTrace();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                };
-        new Thread(runnable).start();
+
     }
 
 

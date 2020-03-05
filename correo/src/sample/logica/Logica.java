@@ -333,8 +333,7 @@ public class Logica {
                     String user = dataInputStream.readUTF();
                     String pass = dataInputStream.readUTF();
                     Logica.getInstance().cargarStore(user, pass);
-                    // System.out.println(user);
-                    // System.out.println(pass);
+
                 }
 
 
@@ -426,7 +425,7 @@ public class Logica {
         try {
             Folder[] a = store.getDefaultFolder().list();
             for (Folder itemFolder : a) {
-
+                System.out.println(itemFolder.getFullName());
                 cargarCarpetasInformesGmail(itemFolder,list,user);
             }
 
@@ -441,17 +440,16 @@ public class Logica {
             if (!itemFolder.isOpen() && itemFolder.getType() == 3) {
 
                 itemFolder.open(Folder.READ_WRITE);
-               // System.out.println(itemFolder.getName());
-               // System.out.println("*************");
+
                 Message[] messages = itemFolder.getMessages();
                 Correo correo;
                 for (int b = 0; b < messages.length; b++) {
                     correo = new Correo(messages[b]);
 
                     list.add(new MensajeInforme(correo.getAsunto(),correo.getRemitente(),correo.getFecha(),correo.getTextoContenido(correo),itemFolder.getFullName(),user));
-                 //   System.out.println(correo.getAsunto());
+
                 }
-              //  System.out.println("------------");
+
             } else {
                 for (Folder folder : itemFolder.list()) {
                     cargarCarpetasInformesGmail(folder,list,user);

@@ -23,19 +23,46 @@
 	<field name="carpeta" class="java.lang.String">
 		<fieldDescription><![CDATA[carpeta]]></fieldDescription>
 	</field>
+	<variable name="date1" class="java.lang.Integer" resetType="Group" resetGroup="Group1" calculation="Count">
+		<variableExpression><![CDATA[$F{date}]]></variableExpression>
+	</variable>
+	<variable name="date2" class="java.lang.Integer" resetType="Group" resetGroup="Group1" calculation="Count">
+		<variableExpression><![CDATA[$F{date}]]></variableExpression>
+	</variable>
+	<variable name="date3" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{date}]]></variableExpression>
+	</variable>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{date}]]></groupExpression>
+	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
-			<textField>
-				<reportElement x="230" y="24" width="100" height="30" uuid="cff1a517-eaa8-4a98-bd3a-e49f625c4c42"/>
-				<textFieldExpression><![CDATA[$F{carpeta}]]></textFieldExpression>
-			</textField>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="25" width="200" height="30" uuid="d0b64d48-6f25-4c7a-bc98-aa0c46ba63ba"/>
+				<textElement>
+					<font size="20" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Informe de carpeta]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="70" height="30" uuid="f87132ce-558a-40f4-a934-44678dbfb5b4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[La carpeta:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="2" width="170" height="30" uuid="cff1a517-eaa8-4a98-bd3a-e49f625c4c42"/>
+				<textFieldExpression><![CDATA[$F{carpeta}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="30" splitType="Stretch">
@@ -43,24 +70,33 @@
 				<reportElement x="430" y="0" width="100" height="30" uuid="d5f2e53f-232b-4bc9-b796-888b2511b980">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="016161f5-82a4-4e7f-9caa-9e7b97322735"/>
 				</reportElement>
-				<text><![CDATA[date]]></text>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="225" y="0" width="100" height="30" uuid="92f2535d-3587-4490-8a87-2b2d01479d71">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a8d1b97e-3058-4ffd-a981-d925bbba6269"/>
 				</reportElement>
-				<text><![CDATA[asunto]]></text>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Asunto:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="0" width="100" height="30" uuid="16a1d5ed-5e4a-48e5-a95b-cc50e726aaf2">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72243510-4075-4230-9925-8b70dbcade77"/>
+				<reportElement x="0" y="0" width="100" height="30" uuid="ec6d6398-52c5-4033-a15c-1afff2e1acac">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ee247b40-c437-47f0-a2db-f812f1304339"/>
 				</reportElement>
-				<text><![CDATA[asunto]]></text>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Remitente:]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="41" splitType="Stretch">
 			<textField>
 				<reportElement x="430" y="0" width="100" height="30" uuid="7c089f5a-d7f2-4fb3-9b4e-75d2d5467783">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="016161f5-82a4-4e7f-9caa-9e7b97322735"/>
@@ -74,20 +110,23 @@
 				<textFieldExpression><![CDATA[$F{asunto}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="30" y="0" width="100" height="30" uuid="91825624-3fd9-4ef9-8062-611c2bb988ba">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72243510-4075-4230-9925-8b70dbcade77"/>
+				<reportElement x="0" y="0" width="100" height="30" uuid="f174a171-9d0b-48d3-9431-b21e0bf017b0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ee247b40-c437-47f0-a2db-f812f1304339"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$F{asunto}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{remitente}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="260" y="0" width="190" height="30" uuid="b1808e80-3539-43d4-8a06-5497704a9fe5"/>
+				<text><![CDATA[El numero de correos en esta carpeta es:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="0" width="100" height="30" uuid="a518b684-fd21-43ab-b1ab-304baa9dec5c"/>
+				<textFieldExpression><![CDATA[$V{date3}]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>

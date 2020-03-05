@@ -13,7 +13,7 @@ public class ControllerHelp {
 
     private void initializeHelp(Stage stage) {
         try {
-            File file = new File("C:\\Users\\col9n\\Desktop\\wiki\\generator\\articles.zip");
+            File file = new File("C:\\Users\\DAM\\Downloads\\wiki\\generator\\articles.zip");
             URL url = file.toURI().toURL();
             JavaHelpFactory factory = new JavaHelpFactory(url);
             factory.create();
@@ -27,7 +27,7 @@ public class ControllerHelp {
 
     public void start(Stage primaryStage) throws Exception {
         initializeHelp(primaryStage);
-        viewer.showHelpDialog(400, 400);
+        viewer.showHelpDialog(0, 0);
 
     }
 
