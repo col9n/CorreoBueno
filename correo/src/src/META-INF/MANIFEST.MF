@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Main-Class: sample.Main
+Class-Path: Reloj.jar jsoup-1.12.2.jar elasticlunr.jar json.jar jasperre
+ ports-6.11.0.jar commons-beanutils-1.9.4.jar commons-collections-3.2.2.
+ jar commons-digester-2.1.jar commons-logging-1.1.1.jar commons-collecti
+ ons4-4.2.jar itext-2.1.7.js7.jar bcprov-jdk15on-1.62.jar jcommon-1.0.23
+ .jar jfreechart-1.0.19.jar ecj-4.4.2.jar castor-xml-1.4.1.jar castor-co
+ re-1.4.1.jar commons-lang3-3.4.jar javax.inject-1.jar jackson-core-2.10
+ .0.jar jackson-databind-2.10.0.jar jackson-annotations-2.10.0.jar javaf
+ x-swt.jar javafx.base.jar javafx.controls.jar javafx.fxml.jar javafx.gr
+ aphics.jar javafx.media.jar javafx.swing.jar javafx.web.jar hamcrest-co
+ re-1.3.jar commons-email-1.4.0.jar assertj-core-3.11.1.jar activation.j
+ ar controlsfx-11.0.0.jar javax.mail.jar docGeneJFXHelp.jar
+
