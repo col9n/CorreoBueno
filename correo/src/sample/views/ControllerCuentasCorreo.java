@@ -2,6 +2,7 @@ package sample.views;
         import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
         import javafx.fxml.Initializable;
+        import javafx.scene.control.Alert;
         import javafx.scene.control.Button;
         import javafx.scene.control.TableView;
         import javafx.stage.Stage;
@@ -10,13 +11,10 @@ package sample.views;
         import net.sf.jasperreports.engine.JasperFillManager;
         import net.sf.jasperreports.engine.JasperPrint;
         import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-        import sample.clases.Correo;
         import sample.clases.CuentaCorreo;
         import sample.clases.MensajeInforme;
-        import sample.clases.TreeItemPropio;
         import sample.logica.Logica;
 
-        import javax.mail.Folder;
         import java.io.File;
         import java.net.URL;
         import java.util.ArrayList;
@@ -58,9 +56,14 @@ public class ControllerCuentasCorreo implements Initializable {
                         JasperPrint print = null;
 
 
-                        print = JasperFillManager.fillReport(getClass().getResourceAsStream("/sample/reportes/informeCuenta.jasper"), parametros, jr);
+                        print = JasperFillManager.fillReport("reportes/informeCuenta.jasper", parametros, jr);
 
                         JasperExportManager.exportReportToPdfFile(print, file.getPath());
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Informe");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Informe Cuenta generado");
+                        alert.showAndWait();
 
                     } catch (JRException e) {
                         e.printStackTrace();

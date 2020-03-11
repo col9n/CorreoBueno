@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import modelos.Evento;
 import modelos.Reloj;
 import modelos.Tarea;
@@ -79,9 +80,7 @@ public class ControllerCorreo implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     /*
 
-            Store store1 = Logica.getInstance().cargarStore("damdijb@gmail.com", "123456A@");
-            Store store2 = Logica.getInstance().cargarStore("martinlg36dam@gmail.com", "helipi67");
-             Logica.getInstance().grabarDatos();
+
 
     */
         // Store store = Logica.getInstance().cargarStore("eduardocapinjavafx@gmail.com", "eduardojavafx");
@@ -148,6 +147,7 @@ public class ControllerCorreo implements Initializable {
 
         };
         treeView.addEventFilter(MouseEvent.MOUSE_CLICKED, mouseHandler1);
+
 
 
     }
@@ -300,6 +300,7 @@ public class ControllerCorreo implements Initializable {
             Parent root = fxmlLoader.load();
             ControllerGestionTareas gestionTareas = (ControllerGestionTareas) fxmlLoader.getController();
             gestionTareas.setStage(stage);
+            gestionTareas.pasarReloj(reloj);
             stage.setTitle("Gestion tareas");
             stage.setScene(new Scene(root, 600, 400));
 
@@ -348,9 +349,14 @@ public class ControllerCorreo implements Initializable {
                             JasperPrint print = null;
 
 
-                            print = JasperFillManager.fillReport(getClass().getResourceAsStream("/sample/reportes/informeCorreo.jasper"), parametros, jr);
+                            print = JasperFillManager.fillReport("reportes/informeCorreo.jasper", parametros, jr);
 
                             JasperExportManager.exportReportToPdfFile(print, file.getPath());
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Informe");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Informe Correo generado");
+                            alert.showAndWait();
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -384,9 +390,14 @@ public class ControllerCorreo implements Initializable {
                             JasperPrint print = null;
 
 
-                            print = JasperFillManager.fillReport(getClass().getResourceAsStream("/sample/reportes/informeCarpeta.jasper"), parametros, jr);
+                            print = JasperFillManager.fillReport("reportes/informeCarpeta.jasper", parametros, jr);
 
                             JasperExportManager.exportReportToPdfFile(print, file.getPath());
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Informe");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Informe Carpeta generado");
+                            alert.showAndWait();
                         }
                     } catch (JRException e) {
                         e.printStackTrace();
@@ -397,5 +408,7 @@ public class ControllerCorreo implements Initializable {
     }
 
 
-
+    public void cerrarReloj() {
+        reloj.terminarReloj();
+    }
 }

@@ -46,14 +46,16 @@ public class ControllerCrearTarea {
             int minutoTarea = Integer.parseInt(min.getText());
             String textTarea = tareaArealizar.getText();
             if (horaTarea >= 0 && horaTarea <= 24 && minutoTarea >= 0 && minutoTarea <= 60) {
-                Tarea tarea = new Tarea(localDate, horaTarea, minutoTarea, textTarea, false);
-                Logica.getInstance().añadirTarea(tarea);
-                reloj.registrarTarea(tarea);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Tarea creada");
-                alert.setHeaderText(null);
-                alert.setContentText("Se ha creado la tarea");
-                alert.showAndWait();
+
+                    Tarea tarea = new Tarea(localDate, horaTarea, minutoTarea, textTarea, false);
+                    Logica.getInstance().añadirTarea(tarea);
+                    reloj.registrarTarea(tarea);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Tarea creada");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Se ha creado la tarea");
+                    alert.showAndWait();
+
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Tarea no ha sido creada");

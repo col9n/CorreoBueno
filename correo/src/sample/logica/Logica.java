@@ -303,9 +303,8 @@ public class Logica {
         }
     }
 
-
     public void grabarDatos() {
-        File datos = new File("datosCorreo.txt");
+        File datos = new File("datos/datosCorreo.txt");
         try {
             DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(datos));
             for (CuentaCorreo cuentaCorreo : Logica.getInstance().getListaCuentas()) {
@@ -315,15 +314,15 @@ public class Logica {
             }
             dataOutputStream.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
 
     }
 
     public void cargarDatos() {
-        File datos = new File("datosCorreo.txt");
+        File datos = new File("datos/datosCorreo.txt");
         try {
             DataInputStream dataInputStream = new DataInputStream(new FileInputStream(datos));
 
@@ -346,8 +345,9 @@ public class Logica {
     }
 
     public void grabarDatosTareas() {
+        File datos = new File("datos/datostareas.txt");
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("datostarea.txt"));
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(datos));
             for (Tarea tarea : Logica.getInstance().getListaTarea())
             {
                 oos.writeObject(tarea);
@@ -362,9 +362,9 @@ public class Logica {
     }
 
     public void cargarDatosTarea() {
-
+        File datos = new File("datos/datostareas.txt");
         try {
-            ObjectInputStream oos = new ObjectInputStream(new FileInputStream("datostarea.txt"));
+            ObjectInputStream oos = new ObjectInputStream(new FileInputStream(datos));
             Tarea a=(Tarea)oos.readObject();
             while (a!=null)
             {
@@ -374,7 +374,7 @@ public class Logica {
             oos.close();
 
 
-            } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } catch (EOFException ex) {
         } catch (ClassNotFoundException ex) {
@@ -383,6 +383,7 @@ public class Logica {
             e.printStackTrace();
         }
     }
+
 
 
     public ObservableList<Correo> cargarCorreoInbox() {
@@ -425,7 +426,7 @@ public class Logica {
         try {
             Folder[] a = store.getDefaultFolder().list();
             for (Folder itemFolder : a) {
-                System.out.println(itemFolder.getFullName());
+                //System.out.println(itemFolder.getFullName());
                 cargarCarpetasInformesGmail(itemFolder,list,user);
             }
 

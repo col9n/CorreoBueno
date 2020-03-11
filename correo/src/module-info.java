@@ -17,5 +17,4 @@ module correo {
     exports sample.logica;
 
     opens sample.views to javafx.fxml;
-
 }

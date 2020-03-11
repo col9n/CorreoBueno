@@ -35,7 +35,7 @@
         <ToolBar prefHeight="40.0" prefWidth="200.0">
             <items>
                 <Button fx:id="borrar" mnemonicParsing="false" onAction="#borrarMensaje" prefHeight="25.0" prefWidth="111.0" text="Borrar Mensaje" />
-                <Button fx:id="help" mnemonicParsing="false" onAction="#ayuda" text="Get some ayuda" />
+                <Button fx:id="help" mnemonicParsing="false" onAction="#ayuda" text="Abrir ayuda" />
                 <Button fx:id="imprimeCorreo" mnemonicParsing="false" onAction="#imprimir" text="Imprimir Correo" />
                 <Button fx:id="imprimeCarpeta" mnemonicParsing="false" onAction="#imprimirCarpeta" text="Imprimir Carpeta" />
                 <Reloj fx:id="reloj" prefHeight="23.0" prefWidth="105.0" />
